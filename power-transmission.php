@@ -2,7 +2,7 @@
 
 //Login details
 $servername = "mysql4.gear.host";
-$username = "powerdata";
+$username = "station1";
 $password = "Rs21_nW6R?13";
 
 if (isset($_GET['check_server'])){
@@ -19,6 +19,10 @@ if (isset($_GET['check_server'])){
     echo "Connected successfully";
     
     $conn->close();
+}
+
+else{
+    echo "No parameters passed."
 }
 
 //Create table query

@@ -22,7 +22,7 @@ if (isset($_GET['check_server'])){
 }
 
 else{
-    echo "No parameters passed."
+    echo "No parameters passed.";
 }
 
 //Create table query

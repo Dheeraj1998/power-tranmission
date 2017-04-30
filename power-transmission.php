@@ -104,25 +104,6 @@ elseif(isset($_GET['insert_off']) && isset($_GET['num_customer']) && isset($_GET
     $conn->close();
 }
 
-elseif(isset($_GET['insert_off']) && isset($_GET['num_customer']) && isset($_GET['UID']) && isset($_GET['power_use']) && isset($_GET['station1'])){
-    $dbname = "station1";
-    $conn = new mysqli("$servername", $username, $password, $dbname);
-    
-    $id = $_GET['UID'];
-    $numbers = $_GET['num_customer'];
-    $power = $_GET['power_use'];
-    
-    $sql = "INSERT INTO Substation1 (ID, Users, TimeOff, TimeOn, PowerUsage) VALUES ($id, $numbers, NOW() - INTERVAL 30 MINUTE - INTERVAL 12 HOUR, '0000-00-00 00:00:00', $power)";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Data has been added.";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-    
-    $conn->close();
-}
-
 elseif(isset($_GET['insert_off']) && isset($_GET['num_customer']) && isset($_GET['UID']) && isset($_GET['power_use']) && isset($_GET['station2'])){
     $dbname = "station1";
     $conn = new mysqli("$servername", $username, $password, $dbname);

@@ -9,8 +9,11 @@ if(isset($_GET['check_server'])){
     $dbname = "station1";
     $conn = new mysqli("$servername", $username, $password, $dbname);
     
-    $sql = "CREATE TABLE SubstationData (ID VARCHAR(10), Users VARCHAR(5), TimeOff DATETIME, TimeOn DATETIME, PowerUsage VARCHAR(4))";
-    $conn->query($sql);
+//    $sql = "CREATE TABLE Substation1 (ID VARCHAR(10), Users VARCHAR(5), TimeOff DATETIME, TimeOn DATETIME, DownTime TIME, PowerUsage VARCHAR(4))";
+//    $sql = "CREATE TABLE Substation2 (ID VARCHAR(10), Users VARCHAR(5), TimeOff DATETIME, TimeOn DATETIME, DownTime TIME, PowerUsage VARCHAR(4))";
+//    $sql = "DROP TABLE Substation1";
+//    $sql = "DROP TABLE Substation2";
+//    $conn->query($sql);
     
     //Check connection
     if ($conn->connect_error) {
@@ -25,7 +28,7 @@ elseif(isset($_GET['delete_values'])){
     $dbname = "station1";
     $conn = new mysqli("$servername", $username, $password, $dbname);
     
-    $sql = "DELETE FROM SubstationData";
+    $sql = "DELETE FROM Substation1";
     $conn->query($sql);
     
     //Check connection
@@ -42,7 +45,7 @@ elseif(isset($_GET['station1']) && isset($_GET['admin'])){
     $dbname = "station1";
     $conn = new mysqli("$servername", $username, $password, $dbname);
     
-    $sql = "SELECT * FROM SubstationData";
+    $sql = "SELECT * FROM Substation1";
 
     $result = mysqli_query($conn ,$sql);
     $array = [];
@@ -67,7 +70,7 @@ elseif(isset($_GET['insert_off']) && isset($_GET['num_customer']) && isset($_GET
     $numbers = $_GET['num_customer'];
     $power = $_GET['power_use'];
     
-    $sql = "INSERT INTO SubstationData (ID, Users, TimeOff, TimeOn, PowerUsage) VALUES ($id, $numbers, NOW() - INTERVAL 30 MINUTE, '0000-00-00 00:00:00', $power)";
+    $sql = "INSERT INTO Substation1 (ID, Users, TimeOff, TimeOn, PowerUsage) VALUES ($id, $numbers, NOW() - INTERVAL 30 MINUTE, '0000-00-00 00:00:00', $power)";
 
     if ($conn->query($sql) === TRUE) {
         echo "Data has been added.";
@@ -83,7 +86,7 @@ elseif(isset($_GET['insert_on']) && isset($_GET['station1'])){
     $dbname = "station1";
     $conn = new mysqli("$servername", $username, $password, $dbname);
     
-    $sql = "UPDATE SubstationData SET TimeOn = NOW() - INTERVAL 30 MINUTE WHERE TimeOn = '0000-00-00 00:00:00'";
+    $sql = "UPDATE Substation1 SET TimeOn = NOW() - INTERVAL 30 MINUTE WHERE TimeOn = '0000-00-00 00:00:00'";
     
     if ($conn->query($sql) === TRUE) {
         echo "Switch on data has been added.";

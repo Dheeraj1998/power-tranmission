@@ -70,7 +70,7 @@ elseif(isset($_GET['insert_off']) && isset($_GET['num_customer']) && isset($_GET
     $numbers = $_GET['num_customer'];
     $power = $_GET['power_use'];
     
-    $sql = "INSERT INTO Substation1 (ID, Users, TimeOff, TimeOn, PowerUsage) VALUES ($id, $numbers, NOW() - INTERVAL 30 MINUTE, '0000-00-00 00:00:00', $power)";
+    $sql = "INSERT INTO Substation1 (ID, Users, TimeOff, TimeOn, PowerUsage) VALUES ($id, $numbers, NOW() - INTERVAL 30 MINUTE - INTERVAL 12 HOUR, '0000-00-00 00:00:00', $power)";
 
     if ($conn->query($sql) === TRUE) {
         echo "Data has been added.";
@@ -86,7 +86,7 @@ elseif(isset($_GET['insert_on']) && isset($_GET['station1'])){
     $dbname = "station1";
     $conn = new mysqli("$servername", $username, $password, $dbname);
     
-    $sql = "UPDATE Substation1 SET TimeOn = NOW() - INTERVAL 30 MINUTE WHERE TimeOn = '0000-00-00 00:00:00'";
+    $sql = "UPDATE Substation1 SET TimeOn = NOW() - INTERVAL 30 MINUTE - INTERVAL 12 HOUR WHERE TimeOn = '0000-00-00 00:00:00'";
     
     if ($conn->query($sql) === TRUE) {
         echo "Switch on data has been added.";

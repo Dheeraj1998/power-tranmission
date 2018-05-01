@@ -1,4 +1,4 @@
-# power-tranmission
+# power-transmission
 This back-end has been designed to allow applications to make API calls to get the required data.
 
 # Timeline
